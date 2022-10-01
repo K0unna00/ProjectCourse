@@ -1,0 +1,60 @@
+﻿@using FinalAgain.Services
+@model List<Question>
+@inject LayoutService layoutService
+@{
+    ViewData["Title"] = "Question";
+    int count = 1;
+    var marksheetId = ViewBag.MarksheetId;
+    var teamId = ViewBag.TeamId;
+    var users = layoutService.GetUsers();
+    var user = users.FirstOrDefault(x => x.UserName == User.Identity.Name);
+    var role = layoutService.GetRole(user);
+}
+<h3>Questions</h3>
+
+@if (role != "Marker")
+{
+    <a class="btn btn-primary" asp-action="CreateQuestion" asp-controller="Question" asp-route-id="@marksheetId">Create New Question</a>
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">AdminName</th>
+            <th scope="col">Content</th>
+            <th scope="col">Grade Limit</th>
+            @if (role == "Marker")
+            {
+                <th scope="col">Actions</th>
+            }
+            @if (role != "Marker")
+            {
+                <th scope="col">Delete</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var i in Model)
+        {
+            <tr>
+                <th scope="row">@count</th>
+                <td>@i.Admin.UserName</td>
+                <td>@i.Content</td>
+                <td>@i.GradeLimit</td>
+                <td>
+                    @if (role == "Marker")
+                    {
+                        <a class="btn btn-success" asp-action="AddMark" asp-route-teamId="@teamId" asp-route-id="@i.Id">Add Mark</a>
+                    }
+                </td>
+                @if (role != "Marker")
+                {
+                    <td>
+                        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@i.Id">Delete</a>
+                    </td>
+                }
+            </tr>
+            count++;
+        }
+    </tbody>
+</table>

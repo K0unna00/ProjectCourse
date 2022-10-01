@@ -1,0 +1,40 @@
+﻿
+@model List<Assignment>
+@{
+    ViewData["Title"] = "Index";
+    int count = 1;
+}
+
+<h3>Assignments</h3>
+<a class="btn btn-primary" asp-action="Create" asp-controller="Assignment">Create New Assingment</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Desc</th>
+            <th scope="col">Admin</th>
+            <th scope="col">Action</th>
+            <th scope="col">Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var i in Model)
+        {
+            <tr>
+                <th scope="row">@count</th>
+                <td>@i.Name</td>
+                <td>@i.Desc</td>
+                <td>@i.Admin.UserName</td>
+                <td>
+                    <a class="btn btn-info" asp-action="Info" asp-route-id="@i.Id">Info</a>
+                </td>
+                <td>
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@i.Id">Delete</a>
+                </td>
+            </tr>
+            count++;
+        }
+    </tbody>
+</table>
+

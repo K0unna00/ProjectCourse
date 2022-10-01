@@ -1,0 +1,44 @@
+﻿@model Marksheet
+
+
+
+<h3>Marksheet Info</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">AdminName</th>
+            <th scope="col">AssignmentName</th>
+            <th scope="col">CreatedAt</th>
+            <th scope="col">Teams</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Model.Id</td>
+            <td>@Model.Name</td>
+            <td>@Model.Admin.UserName</td>
+            <td>@Model.Assignment.Name</td>
+            <td>@Model.CreatedAt</td>
+            <td>
+                <ul>
+
+                    @foreach (var i in ViewBag.Teams)
+                    {
+                        <li class="mt-2">
+                            @i.TeamNo
+                            <a class="btn btn-info" asp-action="TeamInfo" asp-controller="Team" asp-route-id="@i.Id">Info</a>
+                        </li>
+                    }
+                </ul>
+            </td>
+            <td>
+                <a class="btn btn-success" asp-action="Comments" asp-controller="Marksheet" asp-route-id="@Model.Id">See All Comments&Grades</a>
+            </td>
+
+        </tr>
+    </tbody>
+</table>
+

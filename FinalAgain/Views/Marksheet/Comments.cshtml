@@ -1,0 +1,32 @@
+﻿@model List<Mark>
+@{
+    ViewData["Title"] = "Comments";
+    int count = 1;
+}
+
+<h3>Comments</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">MarkerName</th>
+            <th scope="col">Comment</th>
+            <th scope="col">TeamNo</th>
+            <th scope="col">Grade</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var i in Model)
+        {
+            <tr>
+                <th scope="row">@count</th>
+                <th>@i.Marker.UserName</th>
+                <td>@i.Comment</td>
+                <td>@i.Team.TeamNo</td>
+                <td>@i.Grade</td>
+            </tr>
+            count++;
+        }
+    </tbody>
+</table>

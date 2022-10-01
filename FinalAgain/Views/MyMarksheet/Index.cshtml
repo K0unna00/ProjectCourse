@@ -1,0 +1,45 @@
+﻿@model List<Marksheet>
+@{
+    ViewData["Title"] = "Index";
+    int count = 1;
+}
+
+<h3>MyMarksheets</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">MarksheetName</th>
+            <th scope="col">Admin</th>
+            <th scope="col">Teams</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var i in Model)
+        {
+            <tr>
+                <th scope="row">@count</th>
+                <td>@i.Name</td>
+                <td>@i.Admin.UserName</td>
+                <td>
+                    <ul>
+                        @foreach (var j in ViewBag.TeamMarksheets)
+                        {
+                            @if (i.Id == j.MarksheetId)
+                            {
+                                <li>
+                                    @j.Team.TeamNo
+                                    <a class="btn btn-warning ms-3" asp-action="Index" asp-controller="Question" asp-route-teamId="@j.Team.Id" asp-route-id="@i.Id">Questions</a>
+                                    <a class="btn btn-Info ms-3" asp-action="TeamInfo" asp-controller="Team" asp-route-id="@j.Team.Id">Team Info</a>
+                                </li>
+                            }
+                        }
+                    </ul>
+                </td>
+            </tr>
+            count++;
+        }
+    </tbody>
+</table>
+

@@ -1,0 +1,20 @@
+﻿@model List<AppUser>
+@{
+    ViewData["Title"] = "AddMarker";
+    var MarksheetId=ViewBag.MarksheetId;
+}
+<ul class="list-group">
+    @foreach (var marker in Model)
+    {
+        <li class="list-group-item d-flex col-6 ">
+            <div class="col-6">
+                @marker
+            </div>
+            <div class="col-6 text-center">
+                <a class="btn btn-success" asp-action="AddMarkerOnMarksheet" asp-route-id="@marker.Id" asp-route-marksheetId="@MarksheetId" >Add Marker</a>
+            </div>
+        </li>
+    }
+</ul>
+
+

@@ -1,0 +1,21 @@
+﻿@model Mark
+@{
+    ViewData["Title"] = "Add Mark";
+}
+<h4>Question Limit : @ViewBag.Question.GradeLimit</h4>
+<form asp-action="AddMark">
+  <div class="mb-3">
+    <input asp-for="Grade" class="form-control" placeholder="Your Grade">
+  </div>
+  <div class="mb-3">
+    <input asp-for="Comment" class="form-control" placeholder="Your Comment">
+  </div>
+  <div class="mb-3">
+    <input asp-for="QuestionId" type="hidden" value="@ViewBag.Question.Id">
+  </div>
+  <div class="mb-3">
+    <input asp-for="TeamId" type="hidden" value="@ViewBag.TeamId">
+    <span class="text-danger" asp-validation-for="TeamId"></span>
+  </div>
+  <button type="submit" class="btn btn-primary" asp-route-qId="@ViewBag.Question.Id" asp-route-tId="@ViewBag.TeamId">Submit</button>
+</form>

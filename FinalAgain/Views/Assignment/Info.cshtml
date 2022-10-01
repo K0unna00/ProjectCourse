@@ -1,0 +1,36 @@
+﻿@model Assignment
+
+
+
+<h3>Assignment Info</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">AdminName</th>
+            <th scope="col">Description</th>
+            <th scope="col">Marksheets</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Model.Id</td>
+            <td>@Model.Name</td>
+            <td>@Model.Admin.UserName</td>
+            <td>@Model.Desc</td>
+            <td>
+                <ul>
+                    @foreach (var i in ViewBag.Marksheets)
+                    {
+                        <li class="mt-2">
+                            @i.Name
+                            <a class="btn btn-info" asp-action="Info" asp-controller="Marksheet" asp-route-id="@i.Id">Info</a>
+                        </li>
+                    }
+                </ul>
+            </td>
+        </tr>
+    </tbody>
+</table>
+

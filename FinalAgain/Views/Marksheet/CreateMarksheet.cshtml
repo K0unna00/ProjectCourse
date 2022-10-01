@@ -1,0 +1,22 @@
+﻿@model Marksheet
+@{
+    ViewData["Title"] = "CreateGroup";
+}
+
+<form asp-action="CreateMarksheet">
+  <div class="mb-3">
+    <input asp-for="Name" class="form-control" placeholder="Marksheet Name">
+  </div>
+  <div class="mb-3">
+    <select asp-for="AssignmentId" class="form-control" placeholder="TeamNo">
+            @foreach(var i in ViewBag.Assingments)
+            {
+                <option value="@i.Id">
+                    @i.Name
+                </option>
+                
+            }
+    </select>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

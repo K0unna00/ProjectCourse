@@ -1,0 +1,14 @@
+﻿@model Assignment
+@{
+    ViewData["Title"] = "CreateAssignment";
+}
+
+<form asp-action="Create">
+  <div class="mb-3">
+    <input asp-for="Name" class="form-control" placeholder="Assignment Name">
+  </div>
+  <div class="mb-3">
+    <input asp-for="Desc" class="form-control" placeholder="Desc">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

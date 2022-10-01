@@ -1,0 +1,30 @@
+﻿@model List<Team>
+@{
+    ViewData["Title"] = "CreateGroup";
+    int count = 1;
+}
+<h3>Teams</h3>
+<a class="btn btn-primary" asp-action="AddTeam" asp-controller="Team" asp-route-id="@ViewBag.MarksheetId">AddTeam</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">TeamNo</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var i in Model)
+        {
+            <tr>
+                <th scope="row">@count</th>
+                <td>@i.TeamNo</td>
+                <td>
+                    <a class="btn btn-info" asp-action="TeamInfo" asp-controller="Team" asp-route-id="@i.Id">Info</a>
+                </td>
+            </tr>
+            count++;
+        }
+    </tbody>
+</table>
+

@@ -1,0 +1,19 @@
+﻿@model Question
+@{
+    ViewData["Title"] = "CreateQuestion";
+    var marksheetId = ViewBag.MarksheetId;
+}
+<form asp-action="CreateQuestion">
+  <div class="mb-3">
+    <input asp-for="Content" class="form-control" placeholder="Question">
+  </div>
+  <div class="mb-3">
+    <input asp-for="GradeLimit" class="form-control" placeholder="Grade Limit">
+  </div>
+  <div class="mb-3">
+    <input asp-for="MarksheetId" type="hidden" value="@marksheetId">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+

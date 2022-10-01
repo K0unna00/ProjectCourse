@@ -1,0 +1,42 @@
+﻿@model Team
+@{
+    ViewData["Title"] = "CreateGroup";
+    int count = 1;
+}
+<h3>Team Info</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Id</th>
+            <th scope="col">TeamNo</th>
+            <th scope="col">Total Grade</th>
+            <th scope="col">Students</th>
+        </tr>
+    </thead>
+    <tbody>
+            <tr>
+                <th scope="row">@count</th>
+                <td>@Model.Id</td>
+                <td>@Model.TeamNo</td>
+                <td>@Model.TotalGrade</td>
+                <td>
+                    <ul>
+                        <li>
+                            @Model.StudentName1
+                        </li>
+                        <li>
+                            @Model.StudentName2
+                        </li>
+                        <li>
+                            @Model.StudentName3
+                        </li>
+                        <li>
+                            @Model.StudentName4
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+    </tbody>
+</table>
+

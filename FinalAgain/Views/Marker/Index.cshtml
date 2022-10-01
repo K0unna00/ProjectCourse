@@ -1,0 +1,32 @@
+﻿@model List<UserMarksheet>
+@{
+    ViewData["Title"] = "Question";
+    int count = 1;
+    var marksheetId = ViewBag.MarksheetId;
+}
+
+
+<a class="btn btn-primary" asp-action="AddMarker" asp-controller="Marker" asp-route-id="@marksheetId">Add Marker</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var i in Model)
+        {
+            <tr>
+                <th scope="row">@count</th>
+                <td>@i.Marker.UserName</td>
+                <td>
+                    <a class="btn btn-warning" asp-action="RemoveFromMarksheet" asp-route-id="@i.MarksheetId" asp-route-userId="@i.Marker.Id">Remove From Marksheet</a>
+                </td>
+            </tr>
+            count++;
+        }
+    </tbody>
+</table>
+

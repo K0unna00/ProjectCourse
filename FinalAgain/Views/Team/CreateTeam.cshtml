@@ -1,0 +1,23 @@
+﻿@model Team
+@{
+    ViewData["Title"] = "CreateGroup";
+}
+<h3>Create Team</h3>
+<form asp-action="CreateTeam">
+    <div class="mb-3">
+        <input asp-for="TeamNo" class="form-control" placeholder="Team No">
+    </div>
+    <div class="mb-3">
+        <input asp-for="StudentName1" class="form-control" placeholder="Student 1 Name">
+    </div>
+    <div class="mb-3">
+        <input asp-for="StudentName2" class="form-control" placeholder="Student 2 Name">
+    </div>
+    <div class="mb-3">
+        <input asp-for="StudentName3" class="form-control" placeholder="Student 3 Name">
+    </div>
+    <div class="mb-3">
+        <input asp-for="StudentName4" class="form-control" placeholder="Student 4 Name">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
